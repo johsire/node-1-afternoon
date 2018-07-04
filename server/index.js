@@ -3,6 +3,8 @@ const bodyParser = require ('body-parser');
 
 const app = express();
 
+const mc = require(__dirname + '/controllers/messages_messages.js');
+
 // parse application/json();
 app.use(bodyParser.json());
 

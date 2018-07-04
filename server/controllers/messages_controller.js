@@ -17,7 +17,7 @@ modeule.exports = {
     const { text } = req.body;
     const updateID = req.params.id;
     const messageIndex = messages.findIndex(message => message.id == updateID);
-    let message[ messageIndex ];
+    let message = [ messageIndex ];
 
     messages[ messageIndex ] = {
       id: message.id,
@@ -33,3 +33,6 @@ modeule.exports = {
     res.status(200).send(messages);
   }
 };
+
+
+
