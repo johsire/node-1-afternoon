@@ -1,23 +1,17 @@
-const express = require ('express');
-const bodyParser = require ('body-parser');
-const mc = require(__dirname + '/controllers/messages_messages.js');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mc = require( __dirname + '/controllers/messages_controller');
 
 const app = express();
 
-const messagesBaseUrl = "/api/messages";
-app.post(messagesBaseUrl, mc.create);
-app.get(messagesBaseUrl, mc.read);
-app.put(`${messagesBaseUrl}/:id`, mc.update);
-app.delete(`${messagesBaseUrl}/:id`, mc.delete);
+app.use( bodyParser.json() );
+app.use( express.static( __dirname + '/../public/build' ) );
 
-
-
-
-
-
-// parse application/json();
-app.use(bodyParser.json());
+const baseURL = "/api/messages";
+app.post( baseURL, mc.create );
+app.get( baseURL, mc.read );
+app.put( `${baseURL}/:id`, mc.update );
+app.delete( `${baseURL}/:id`, mc.delete );
 
 const port = 3000;
-
-app.listen( port, () => { console.log("server listening on port" + port); });
+app.listen( port, () => { console.log(`Server listening on port ${port}.`); } );
